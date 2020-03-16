@@ -7,13 +7,13 @@ export interface BoxProps {
   id: any
   left: number
   top: number
-  hideSourceOnDrag: boolean
+  hideSourceOnDrag: boolean 
 }
 
 const SmokeItem = styled.div`
   position: absolute;
   height: 57px;
-  width: 67px;
+  width: 57px;
   cursor: move;
   z-index: 2;
   background-image: url(${smokeImage});
