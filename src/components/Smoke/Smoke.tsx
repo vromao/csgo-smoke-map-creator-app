@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDrag } from 'react-dnd';
+import smokeImage from '../../images/smoke-sprite.png';
 
 export interface BoxProps {
   id: any
@@ -11,48 +12,13 @@ export interface BoxProps {
 
 const SmokeItem = styled.div`
   position: absolute;
-  height: 60px;
-  width: 60px;
+  height: 57px;
+  width: 67px;
   cursor: move;
   z-index: 2;
-
-  .smokeItem {
-    width: 22.5em;
-    height: 7.5em;
-    background: #f2f9fe;
-    -moz-border-radius: 6.25em;
-    -webkit-border-radius: 6.25em;
-    border-radius: 6.25em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    transform: translate(-50%, -50%) scale(0.3);
-  }
-
-  .smokeItem::after, .smokeItem::before {
-    content: "";
-    position: absolute;
-    background: #f2f9fe;
-    z-index: -1;
-    border-radius: 50%;
-  }
-
-  .smokeItem::after{
-    width: 7.5em;
-    height: 7.5em;
-    top: -3.125em;
-    left: 3.125em;
-  }
-
-  .smokeItem::before{
-    width: 11.25em;
-    height: 11.25em;
-    top: -5.625em;
-    right: 3.125em;
-  }
+  background-image: url(${smokeImage});
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
 const Smoke: React.FC<BoxProps> = ({
@@ -70,16 +36,12 @@ const Smoke: React.FC<BoxProps> = ({
 
   if (isDragging && hideSourceOnDrag) {
     return (
-      <SmokeItem ref={drag}>
-        <div className="smokeItem"></div>
-      </SmokeItem>
+      <SmokeItem ref={drag} />
     )
   }
   return (
-    <SmokeItem ref={drag} style={{ left, top }}>
-      <div className="smokeItem"></div>
-    </SmokeItem>
+    <SmokeItem ref={drag} style={{ left, top }} />
   )
 }
 
-export default Smoke
+export default Smoke;
